@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ─── Reset ──────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Colours */
+  --clr-dark:           #1a1a1a;
+  --clr-dark-mid:       #2a2a2a;
+  --clr-charcoal:       #3a3a3a;
+  --clr-light-bg:       #e2e2e2;
+  --clr-lighter-bg:     #ebebeb;
+  --clr-white:          #ffffff;
+  --clr-text:           #1a1a1a;
+  --clr-text-light:     #4a4a4a;
+  --clr-text-muted:     #888888;
+  --clr-pill-bg:        #1a1a1a;
+  --clr-pill-active:    #e2e2e2;
+  --clr-pill-active-text: #1a1a1a;
+
+  /* Typography */
+  --font-script: 'Dancing Script', cursive;
+  --font-body:   'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Base */
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--clr-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--clr-light-bg);
+  margin: 0;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul { list-style: none; }
+a  { text-decoration: none; color: inherit; }
+button { font-family: var(--font-body); cursor: pointer; border: none; background: none; }
