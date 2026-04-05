@@ -1,7 +1,10 @@
-export function NavPill({ activePage, onNavigate }) {
+export function NavPill({ activePage, onNavigate, variant = 'dark' }) {
   const pages = ['Welcome', 'About Me', 'My Projects', 'Contact']
   return (
-    <nav className="nav-pill" aria-label="Main navigation">
+    <nav
+      className={`nav-pill${variant === 'glass' ? ' nav-pill--glass' : ''}`}
+      aria-label="Main navigation"
+    >
       {pages.map((page) => (
         <button
           key={page}

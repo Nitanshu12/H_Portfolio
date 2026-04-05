@@ -36,24 +36,26 @@ export default function AboutPage({ onNavigate }) {
             <h1 className="fs-heading">About Me</h1>
 
             <p className="fs-body-text">
-              I am Harshita Panwar, an Interior Architecture Design student with
-              a passion for crafting spaces that tell stories. My work spans
-              spatial design, furniture, product design, 3D modelling, and
-              digital art — always exploring the intersection of aesthetics and
-              function.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+              nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </p>
 
             <div className="about-skills">
-              <p className="skills-label">Skills &amp; Disciplines</p>
+              <p className="skills-label">Skill:</p>
               <ul>
-                {SKILLS.map((s, i) => (
-                  <li key={i}>{s}</li>
-                ))}
+                <li>Lorem ipsum dolor sit</li>
+                <li>amet, consectetur adipiscing elit,</li>
+                <li>sed do eiusmod tempor</li>
+                <li>incididunt ut labore</li>
               </ul>
             </div>
-
-            <SocialIcons variant="dark" />
           </div>
+        </div>
+
+        {/* Bottom Socials */}
+        <div className="about-socials">
+          <SocialIcons variant="dark" />
         </div>
       </div>
     </div>
