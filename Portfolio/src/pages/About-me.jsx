@@ -1,5 +1,6 @@
 import { NavPill } from '../utils/Navpill'
 import { SocialIcons } from '../utils/Social-icons'
+import About       from '../../PORTFOLIO-CONTENT/About-me/About.jpeg'
 
 const SKILLS = [
   'Interior Architecture & Space Design',
@@ -13,7 +14,6 @@ const SKILLS = [
 export default function AboutPage({ onNavigate }) {
   return (
     <div className="page-wrapper fs-page">
-      {/* ── Top Nav ── */}
       <div className="fs-nav">
         <NavPill activePage="About Me" onNavigate={onNavigate} />
       </div>
@@ -25,7 +25,7 @@ export default function AboutPage({ onNavigate }) {
           {/* Left: photo */}
           <div className="about-photo-wrap">
             <img
-              src="/images/about-photo.jpg"
+              src={About}
               alt="Harshita Panwar"
               className="about-photo"
             />

@@ -38,7 +38,7 @@ export default function WelcomePage({ onNavigate }) {
                   nisi ut aliquip ex ea commodo consequat.
                 </p>
 
-                <SocialIcons variant="light" decorDots />
+                <SocialIcons variant="light" decorDots={false} />
               </div>
 
               <div className="welcome-cta-wrap">
