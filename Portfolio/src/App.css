@@ -230,38 +230,35 @@
 .welcome-shell {
   flex: 1;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px;
+  flex-direction: column;
+  padding: clamp(16px, 2.5vw, 24px);
   min-height: 100vh;
   box-sizing: border-box;
 }
 
 .welcome-card {
   width: 100%;
-  min-height: 94vh;
-  max-width: 1600px;
-  margin: 0 auto;
-  background: var(--clr-white);
-  border-radius: clamp(16px, 3vw, 36px);
-  padding: 6px;
+  flex: 1;
+  position: relative;
   display: flex;
   flex-direction: column;
-  box-shadow:
-    0 4px 6px rgba(0, 0, 0, 0.04),
-    0 24px 48px rgba(0, 0, 0, 0.12);
 }
 
 .welcome-card__stage {
   position: relative;
   flex: 1;
-  border-radius: clamp(14px, 2.5vw, 32px);
+  min-height: 0;
+  border-radius: clamp(32px, 5vw, 56px);
   overflow: hidden;
+  border: 1px solid rgba(200, 200, 200, 0.55);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
 }
 
 .welcome-card__media {
   position: absolute;
   inset: 0;
+  border-radius: inherit;
+  overflow: hidden;
 }
 
 .welcome-hero-bg {
@@ -273,9 +270,9 @@
 .welcome-overlay {
   background: linear-gradient(
     105deg,
-    rgba(18, 18, 18, 0.55) 0%,
-    rgba(28, 28, 28, 0.3) 45%,
-    rgba(12, 12, 12, 0.45) 100%
+    rgba(18, 18, 18, 0.8) 0%,
+    rgba(28, 28, 28, 0.6) 45%,
+    rgba(12, 12, 12, 0.7) 100%
   );
 }
 
@@ -286,8 +283,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 32px 32px 0px;
+  justify-content: space-between;   /* nav top, button bottom */
+  padding: clamp(24px, 3.5vw, 36px) clamp(20px, 3vw, 36px)
+    clamp(28px, 4vw, 44px);
   min-height: 100%;
   box-sizing: border-box;
 }
@@ -304,7 +302,13 @@
   display: flex;
   justify-content: center;
   flex-shrink: 0;
-  padding-top: 3px;
+}
+
+.welcome-cta-wrap--overlap {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  z-index: 10;
 }
 
 .hero-nav-wrap {
@@ -363,27 +367,6 @@
   width: 7px;
   height: 7px;
 }
- .hero-cta {
-  margin-top: 4px;
-  padding: 11px 36px;
-  border-radius: 50px;
-  border: 0.5px solid rgba(255,255,255,0.78);
-  background: transparent;
-  color: #fff;
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  cursor: pointer;
-  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
-}
-
-.hero-cta:hover {
-  background: #fff;
-  color: var(--clr-dark);
-  border-color: #fff;
-}
-
 /* Welcome hero — wins over .hero-content / .hero-name / .hero-cta */
 .hero-content.welcome-content {
   flex: 1;
@@ -413,33 +396,29 @@
   color: rgba(255, 255, 255, 0.94);
 }
 
+/* Outer ring matches .welcome-page background (--clr-light-bg) */
 .hero-cta.welcome-cta {
   margin-top: 0;
-  padding: 16px 52px;
+  padding: 14px clamp(40px, 8vw, 56px);
   border-radius: 999px;
   background: #000;
   color: #fff;
-  border: 3px solid #fff;
-  /* border-bottom: 2px solid #fff; */
+  border: 6px solid var(--clr-light-bg);
   font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: none;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .hero-cta.welcome-cta:hover {
-  background: #0d0d0d;
+  background: #141414;
   color: #fff;
-  border-color: #fff;
-  transform: translateY(2px);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+  border-color: var(--clr-light-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
 }
-
-/* ══════════════════════════════════════════════════════════
-   SECTION LABEL  (large grey heading above card)
-══════════════════════════════════════════════════════════ */
 .section-label {
   font-family: var(--font-body);
   font-size: clamp(26px, 4vw, 40px);
@@ -487,9 +466,6 @@
   margin: 0;
 }
 
-/* ══════════════════════════════════════════════════════════
-   PAGE 2 — ABOUT ME
-══════════════════════════════════════════════════════════ */
 .about-body {
   display: flex;
   gap: 40px;
@@ -563,14 +539,14 @@
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
 .project-card {
-  border-radius: 14px;
+  border-radius: 18px;
   overflow: hidden;
-  aspect-ratio: 3/4;
+  aspect-ratio: 3 / 4;
   position: relative;
   cursor: pointer;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -587,21 +563,37 @@
 .project-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 55%);
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.94) 0%,
+    rgba(0, 0, 0, 0.78) 22%,
+    rgba(0, 0, 0, 0.58) 42%,
+    rgba(0, 0, 0, 0.32) 62%,
+    rgba(0, 0, 0, 0.12) 78%,
+    transparent 100%
+  );
   display: flex;
   align-items: flex-end;
-  padding: 14px 16px;
-  opacity: 0;
-  transition: opacity 0.28s ease;
+  padding: 16px 18px;
+  opacity: 1;
 }
 
 .project-card:hover {
   transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 14px 36px rgba(0,0,0,0.18);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.2);
 }
 
 .project-card:hover .project-card-overlay {
-  opacity: 1;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.96) 0%,
+    rgba(0, 0, 0, 0.84) 24%,
+    rgba(0, 0, 0, 0.65) 44%,
+    rgba(0, 0, 0, 0.38) 64%,
+    rgba(0, 0, 0, 0.16) 80%,
+    transparent 100%
+  );
 }
 
 .project-card-title {
@@ -893,7 +885,8 @@
   }
 
   .welcome-card__stage {
-    min-height: min(90vh, 800px);
+    min-height: unset;
+    border-radius: clamp(24px, 4vw, 44px);
   }
 
   .nav-pill--glass {
@@ -957,14 +950,9 @@
     padding: 12px;
   }
 
-  .welcome-card {
-    padding: 8px;
-    border-radius: 24px;
-  }
-
   .welcome-card__stage {
-    min-height: min(86vh, 720px);
-    border-radius: 18px;
+    min-height: unset; /* use flex stretch naturally */
+    border-radius: clamp(20px, 6vw, 32px);
   }
 
   .welcome-inner {
@@ -986,9 +974,10 @@
   }
 
   .hero-cta.welcome-cta {
-    border-width: 4px;
-    padding: 21px 28px;
-    letter-spacing: 0.14em;
+    border-width: 5px;
+    border-color: var(--clr-light-bg);
+    padding: 12px 28px;
+    letter-spacing: 0.12em;
   }
 
   /* Projects: 1-col grid */

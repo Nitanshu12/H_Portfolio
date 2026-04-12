@@ -30,17 +30,16 @@ export default function WelcomePage({ onNavigate }) {
 
               <div className="hero-content welcome-content">
                 <h1 className="hero-name welcome-name">Harshita Panwar</h1>
-
                 <p className="hero-description welcome-description">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                   eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                   enim ad minim veniam, quis nostrud exercitation ullamco laboris
                   nisi ut aliquip ex ea commodo consequat.
                 </p>
-
                 <SocialIcons variant="light" decorDots={false} />
               </div>
 
+              {/* Button sits at the bottom of the inner flex column */}
               <div className="welcome-cta-wrap">
                 <button
                   type="button"
