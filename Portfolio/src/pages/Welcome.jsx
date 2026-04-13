@@ -40,7 +40,7 @@ export default function WelcomePage({ onNavigate }) {
               </div>
 
               {/* Button sits at the bottom of the inner flex column */}
-              <div className="welcome-cta-wrap">
+              <div className="welcome-cta-wrap welcome-cta-wrap--overlap">
             <button
               type="button"
               className="hero-cta welcome-cta"

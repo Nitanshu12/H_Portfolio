@@ -305,10 +305,11 @@
 }
 
 .welcome-cta-wrap--overlap {
-  position: absolute;
+  position: relative;
   left: 50%;
-  transform: translate(-50%, 50%);
-  z-index: 10;
+  transform: translate(-50%, 50%);  /* pushes button to sit half-outside the card */
+  z-index: 0;
+  padding-top: 40px;
 }
 
 .hero-nav-wrap {
@@ -862,9 +863,6 @@
   flex: 1;
 }
 
-/* ══════════════════════════════════════════════════════════
-   FOOTER
-══════════════════════════════════════════════════════════ */
 .footer {
   background: var(--clr-light-bg);
   padding: 20px 24px;
@@ -873,14 +871,11 @@
   color: var(--clr-text-muted);
   letter-spacing: 0.2px;
   border-top: 1px solid rgba(0,0,0,0.06);
-  margin-top: auto;
+  margin-top: 20px;
 }
 
-/* ══════════════════════════════════════════════════════════
-   RESPONSIVE — TABLET  (≤ 900px)
-══════════════════════════════════════════════════════════ */
 @media (max-width: 900px) {
-  /* Fullscreen nav padding */
+
   .fs-nav {
     padding: 24px 20px 0;
   }
@@ -936,11 +931,11 @@
     flex-direction: column;
     gap: 32px;
   }
+  .welcome-cta-wrap--overlap{
+    padding-bottom: 30px;
+  }
 }
 
-/* ══════════════════════════════════════════════════════════
-   RESPONSIVE — MOBILE  (≤ 540px)
-══════════════════════════════════════════════════════════ */
 @media (max-width: 540px) {
   .nav-btn {
     padding: 8px 14px;
@@ -982,6 +977,10 @@
     padding: 12px 32px;
     font-size: 13px;
     letter-spacing: 0.06em;
+    
+  }
+  .welcome-cta-wrap--overlap{
+    padding-bottom: 30px;
   }
 
   /* Projects: 1-col grid */

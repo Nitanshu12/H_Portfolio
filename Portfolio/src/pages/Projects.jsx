@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { NavPill } from '../utils/Navpill'
 import projectsData from '../data/projectsData.json'
+import { SocialIcons } from '../utils/Social-icons'
 import '../gallery.css'
 const allImages = import.meta.glob('../../PORTFOLIO-CONTENT/**/*.{jpg,jpeg,png,webp,gif,svg}', { eager: true, import: 'default' })
 import coverSpaceDesign    from '../../PORTFOLIO-CONTENT/COVER PHOTOS/2. Space design.jpg'
@@ -57,12 +58,10 @@ function ProjectCard({ label, cover, onClick }) {
   )
 }
 
-/* ── Lightbox overlay (portalled to body) ── */
 function Lightbox({ src, alt, onClose }) {
   useEffect(() => {
     const handleKey = (e) => { if (e.key === 'Escape') onClose() }
     window.addEventListener('keydown', handleKey)
-    // Lock body scroll
     document.body.style.overflow = 'hidden'
     return () => {
       window.removeEventListener('keydown', handleKey)
@@ -176,6 +175,9 @@ export default function ProjectsPage({ onNavigate }) {
             ))}
           </div>
         </div>
+      </div>
+      <div className="about-socials">
+          <SocialIcons variant="dark" />
       </div>
     </div>
   )
