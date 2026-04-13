@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useCallback, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { NavPill } from '../utils/Navpill'
 import projectsData from '../data/projectsData.json'
 import '../gallery.css'
@@ -16,9 +17,10 @@ import coverDigitalArt     from '../../PORTFOLIO-CONTENT/COVER PHOTOS/11. DIGITA
 import coverPrintMaking    from '../../PORTFOLIO-CONTENT/COVER PHOTOS/13. Print Making .png'
 import coverUnreal         from '../../PORTFOLIO-CONTENT/COVER PHOTOS/14. UNREAL ENGINE.png'
 import coverPainting       from '../../PORTFOLIO-CONTENT/COVER PHOTOS/15. Painting Sketching.png'
-
+import coverJury from '../../PORTFOLIO-CONTENT/COVER PHOTOS/1. Jury.jpeg'
+import coverPoster from '../../PORTFOLIO-CONTENT/COVER PHOTOS/12. Posters.jpeg'
 const PROJECTS = [
-  { id: 1,  label: 'Jury',                cover: null,               dataKey: '1. Jury' },
+  { id: 1,  label: 'Jury',                cover: coverJury,          dataKey: '1. Jury' },
   { id: 2,  label: 'Space Design',        cover: coverSpaceDesign,   dataKey: '2. Space Design' },
   { id: 3,  label: 'Furniture Design',    cover: coverFurniture,     dataKey: '3. Furniture Design' },
   { id: 4,  label: 'Product Design',      cover: coverProduct,       dataKey: '4. Product Design' },
@@ -29,7 +31,7 @@ const PROJECTS = [
   { id: 9,  label: 'Logo & Branding',     cover: coverLogo,          dataKey: '9. Logo Branding' },
   { id: 10, label: 'UI / UX',             cover: coverUIUX,          dataKey: '10. UI-UX' },
   { id: 11, label: 'Digital Art',         cover: coverDigitalArt,    dataKey: '11. Digital Art' },
-  { id: 12, label: 'Posters',             cover: null,               dataKey: '12. Posters' },
+  { id: 12, label: 'Posters',             cover: coverPoster,        dataKey: '12. Posters' },
   { id: 13, label: 'Print Making',        cover: coverPrintMaking,   dataKey: '13. Print Making' },
   { id: 14, label: 'Unreal Engine',       cover: coverUnreal,        dataKey: '14. Unreal Engine' },
   { id: 15, label: 'Painting & Sketches', cover: coverPainting,      dataKey: '15. Painting  -Sketches' },
@@ -44,13 +46,50 @@ function ProjectCard({ label, cover, onClick }) {
       }
       <div className="project-card-overlay">
         <span className="project-card-title">{label}</span>
+        <span className="project-card-arrow">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </span>
       </div>
     </div>
   )
 }
 
+/* ── Lightbox overlay (portalled to body) ── */
+function Lightbox({ src, alt, onClose }) {
+  useEffect(() => {
+    const handleKey = (e) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', handleKey)
+    // Lock body scroll
+    document.body.style.overflow = 'hidden'
+    return () => {
+      window.removeEventListener('keydown', handleKey)
+      document.body.style.overflow = ''
+    }
+  }, [onClose])
+
+  return createPortal(
+    <div className="lightbox-backdrop" onClick={onClose}>
+      <button className="lightbox-close" onClick={onClose} aria-label="Close">×</button>
+      <img
+        src={src}
+        alt={alt}
+        className="lightbox-img"
+        onClick={(e) => e.stopPropagation()}
+      />
+    </div>,
+    document.body
+  )
+}
+
 export default function ProjectsPage({ onNavigate }) {
   const [selectedProject, setSelectedProject] = useState(null)
+  const [lightboxSrc, setLightboxSrc] = useState(null)
+
+  const openLightbox = useCallback((src) => setLightboxSrc(src), [])
+  const closeLightbox = useCallback(() => setLightboxSrc(null), [])
 
   if (selectedProject) {
     const projectInfo = PROJECTS.find(p => p.id === selectedProject)
@@ -67,13 +106,18 @@ export default function ProjectsPage({ onNavigate }) {
               &larr; Back to Projects
             </button>
             <h1 className="fs-heading" style={{ marginBottom: '24px' }}>{projectInfo.label}</h1>
-            
-            {/* Display root files if any */}
+          
             {projData && projData.files && projData.files.length > 0 && (
               <div className="gallery-section">
                 <div className="gallery-grid">
                   {projData.files.map((file, idx) => (
-                     <img key={`root-${idx}`} src={allImages[file]} alt={projectInfo.label} loading="lazy" />
+                     <img
+                       key={`root-${idx}`}
+                       src={allImages[file]}
+                       alt={projectInfo.label}
+                       loading="lazy"
+                       onClick={() => openLightbox(allImages[file])}
+                     />
                   ))}
                 </div>
               </div>
@@ -85,7 +129,13 @@ export default function ProjectsPage({ onNavigate }) {
                 <div className="gallery-subheading">{subFolder}</div>
                 <div className="gallery-grid">
                   {subData.files.map((file, idx) => (
-                    <img key={`sub-${subFolder}-${idx}`} src={allImages[file]} alt={subFolder} loading="lazy" />
+                    <img
+                      key={`sub-${subFolder}-${idx}`}
+                      src={allImages[file]}
+                      alt={subFolder}
+                      loading="lazy"
+                      onClick={() => openLightbox(allImages[file])}
+                    />
                   ))}
                 </div>
               </div>
@@ -97,6 +147,11 @@ export default function ProjectsPage({ onNavigate }) {
             )}
           </div>
         </div>
+
+        {/* Lightbox */}
+        {lightboxSrc && (
+          <Lightbox src={lightboxSrc} alt={projectInfo.label} onClose={closeLightbox} />
+        )}
       </div>
     )
   }

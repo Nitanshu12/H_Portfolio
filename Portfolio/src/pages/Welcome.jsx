@@ -41,15 +41,15 @@ export default function WelcomePage({ onNavigate }) {
 
               {/* Button sits at the bottom of the inner flex column */}
               <div className="welcome-cta-wrap">
-                <button
-                  type="button"
-                  className="hero-cta welcome-cta"
-                  onClick={() => onNavigate('My Projects')}
-                >
-                  Explore Work
-                </button>
-              </div>
-            </div>
+            <button
+              type="button"
+              className="hero-cta welcome-cta"
+              onClick={() => onNavigate('My Projects')}
+            >
+              Explore Work
+            </button>
+          </div>
+        </div>
           </div>
         </div>
       </section>
