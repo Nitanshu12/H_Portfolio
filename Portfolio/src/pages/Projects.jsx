@@ -110,13 +110,17 @@ export default function ProjectsPage({ onNavigate }) {
               <div className="gallery-section">
                 <div className="gallery-grid">
                   {projData.files.map((file, idx) => (
-                     <img
-                       key={`root-${idx}`}
-                       src={allImages[file]}
-                       alt={projectInfo.label}
-                       loading="lazy"
-                       onClick={() => openLightbox(allImages[file])}
-                     />
+                    <div
+                      key={`root-${idx}`}
+                      className="gallery-card"
+                      onClick={() => openLightbox(allImages[file])}
+                    >
+                      <img
+                        src={allImages[file]}
+                        alt={projectInfo.label}
+                        loading="lazy"
+                      />
+                    </div>
                   ))}
                 </div>
               </div>
@@ -128,13 +132,17 @@ export default function ProjectsPage({ onNavigate }) {
                 <div className="gallery-subheading">{subFolder}</div>
                 <div className="gallery-grid">
                   {subData.files.map((file, idx) => (
-                    <img
+                    <div
                       key={`sub-${subFolder}-${idx}`}
-                      src={allImages[file]}
-                      alt={subFolder}
-                      loading="lazy"
+                      className="gallery-card"
                       onClick={() => openLightbox(allImages[file])}
-                    />
+                    >
+                      <img
+                        src={allImages[file]}
+                        alt={subFolder}
+                        loading="lazy"
+                      />
+                    </div>
                   ))}
                 </div>
               </div>

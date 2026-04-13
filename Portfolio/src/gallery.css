@@ -36,28 +36,50 @@
   margin-bottom: 16px;
 }
 
-/* Masonry-style columns so images keep original aspect ratios */
+/* Horizontal scrolling gallery — phone-style */
 .gallery-grid {
-  columns: 3;
-  column-gap: 16px;
+  display: flex;
+  gap: 16px;
   width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  padding-bottom: 8px;
+
+  /* Hide scrollbar across browsers */
+  scrollbar-width: none;           /* Firefox */
+  -ms-overflow-style: none;        /* IE / Edge */
+}
+.gallery-grid::-webkit-scrollbar {
+  display: none;                   /* Chrome / Safari */
 }
 
-.gallery-grid img {
-  width: 100%;
-  height: auto;          /* preserve original aspect ratio */
-  border-radius: 12px;
-  display: block;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
+/* Square card container */
+.gallery-card {
+  flex: 0 0 340px;                 /* fixed width */
+  height: 340px;                   /* 1:1 square */
+  border-radius: 14px;
+  background: #e8e8e8;            /* subtle fill behind non-square images */
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
   cursor: pointer;
-  break-inside: avoid;   /* prevent column breaks within an image */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.gallery-grid img:hover {
+.gallery-card:hover {
   transform: scale(1.02);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.16);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;             /* full image visible, no cropping */
+  display: block;
+  padding: 0;
 }
 
 .no-content {
@@ -74,7 +96,7 @@
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   display: flex;
@@ -125,18 +147,20 @@
   background: rgba(255, 255, 255, 0.25);
 }
 
-/* ── Responsive gallery columns ── */
+/* ── Responsive ── */
 @media (max-width: 900px) {
-  .gallery-grid {
-    columns: 2;
+  .gallery-card {
+    flex: 0 0 280px;
+    height: 280px;
   }
 }
 
 @media (max-width: 540px) {
-  .gallery-grid {
-    columns: 1;
+  .gallery-card {
+    flex: 0 0 240px;
+    height: 240px;
   }
-  
+
   .lightbox-backdrop {
     padding: 16px;
   }
