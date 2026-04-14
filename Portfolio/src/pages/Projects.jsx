@@ -30,7 +30,9 @@ const PROJECTS = [
   { id: 7,  label: 'Design Principles',   cover: coverDesignPrinc,   dataKey: '7. Design Priciples' },
   { id: 8,  label: 'Material Explore',    cover: coverMaterial,      dataKey: '8. Material Exploration' },
   { id: 9,  label: 'Logo & Branding',     cover: coverLogo,          dataKey: '9. Logo Branding' },
-  { id: 10, label: 'UI / UX',             cover: coverUIUX,          dataKey: '10. UI-UX' },
+  { id: 10, label: 'UI / UX',             cover: coverUIUX,          dataKey: '10. UI-UX',
+    pdfs: [{ url: '/pdfs/paper-trail-app.pdf' }]
+  },
   { id: 11, label: 'Digital Art',         cover: coverDigitalArt,    dataKey: '11. Digital Art' },
   { id: 12, label: 'Posters',             cover: coverPoster,        dataKey: '12. Posters' },
   { id: 13, label: 'Print Making',        cover: coverPrintMaking,   dataKey: '13. Print Making' },
@@ -105,6 +107,22 @@ export default function ProjectsPage({ onNavigate }) {
               &larr; Back to Projects
             </button>
             <h1 className="fs-heading" style={{ marginBottom: '24px' }}>{projectInfo.label}</h1>
+
+            {/* Embedded PDFs */}
+            {projectInfo.pdfs && projectInfo.pdfs.length > 0 && (
+              <div className="gallery-section">
+                {projectInfo.pdfs.map((pdf, idx) => (
+                  <div key={`pdf-${idx}`} className="pdf-embed-wrap">
+                    <div className="pdf-embed-label">{pdf.name}</div>
+                    <iframe
+                      src={pdf.url}
+                      className="pdf-embed-frame"
+                      title={pdf.name}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
           
             {projData && projData.files && projData.files.length > 0 && (
               <div className="gallery-section">
@@ -150,7 +168,7 @@ export default function ProjectsPage({ onNavigate }) {
 
             {/* No Content placeholder */}
             {(!projData || (projData.files.length === 0 && Object.keys(projData.subfolders || {}).length === 0)) && (
-               <div className="no-content">Content is coming soon.</div>
+               <div className="no-content"></div>
             )}
           </div>
         </div>
@@ -184,9 +202,9 @@ export default function ProjectsPage({ onNavigate }) {
           </div>
         </div>
       </div>
-      <div className="about-socials">
+      {/* <div className="about-socials">
           <SocialIcons variant="dark" />
-      </div>
+      </div> */}
     </div>
   )
 }

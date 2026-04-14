@@ -25,10 +25,6 @@
       }
     }
   },
-  "10. UI-UX": {
-    "files": [],
-    "subfolders": {}
-  },
   "11. Digital Art": {
     "files": [
       "../../PORTFOLIO-CONTENT/11. Digital Art/Illustration.png"
@@ -130,7 +126,8 @@
   },
   "2. Space Design": {
     "files": [
-      "../../PORTFOLIO-CONTENT/2. Space Design/2.The Earthen Sanctum.png"
+      "../../PORTFOLIO-CONTENT/2. Space Design/2.The Earthen Sanctum.png",
+      "../../PORTFOLIO-CONTENT/2. Space Design/havillam_page-0001.jpg"
     ],
     "subfolders": {
       "1.Backyard Retreat Space": {
@@ -156,7 +153,9 @@
   },
   "4. Product Design": {
     "files": [
-      "../../PORTFOLIO-CONTENT/4. Product Design/Grapelle Fruit Packaging.png"
+      "../../PORTFOLIO-CONTENT/4. Product Design/Grapelle Fruit Packaging.png",
+      "../../PORTFOLIO-CONTENT/4. Product Design/koolgro_page-0001.jpg",
+      "../../PORTFOLIO-CONTENT/4. Product Design/redesigning-stalls_page-0001.jpg"
     ],
     "subfolders": {}
   },

@@ -54,9 +54,6 @@ export default function AboutPage({ onNavigate }) {
         </div>
 
         {/* Bottom Socials */}
-        <div className="about-socials">
-          <SocialIcons variant="dark" />
-        </div>
       </div>
     </div>
   )

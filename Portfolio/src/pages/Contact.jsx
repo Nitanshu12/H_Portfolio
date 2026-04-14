@@ -56,7 +56,7 @@ export default function ContactPage({ onNavigate }) {
               </div>
             </div>
 
-            <SocialIcons variant="dark" />
+            {/* <SocialIcons variant="dark" /> */}
           </div>
 
           {/* Right: form */}

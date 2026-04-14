@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import './App.css'
+import { SocialIcons } from './utils/Social-icons'
 
-import WelcomePage  from './pages/Welcome'
-import AboutPage    from './pages/About-me'
+import WelcomePage from './pages/Welcome'
+import AboutPage from './pages/About-me'
 import ProjectsPage from './pages/Projects'
-import ContactPage  from './pages/Contact'
+import ContactPage from './pages/Contact'
 
 export default function App() {
   const [activePage, setActivePage] = useState('Welcome')
@@ -16,14 +17,19 @@ export default function App() {
 
   return (
     <div className="portfolio-root">
-      {activePage === 'Welcome'     && <WelcomePage  onNavigate={handleNavigate} />}
-      {activePage === 'About Me'    && <AboutPage    onNavigate={handleNavigate} />}
+      {activePage === 'Welcome' && <WelcomePage onNavigate={handleNavigate} />}
+      {activePage === 'About Me' && <AboutPage onNavigate={handleNavigate} />}
       {activePage === 'My Projects' && <ProjectsPage onNavigate={handleNavigate} />}
-      {activePage === 'Contact'     && <ContactPage  onNavigate={handleNavigate} />}
+      {activePage === 'Contact' && <ContactPage onNavigate={handleNavigate} />}
 
       {activePage !== 'Welcome' && (
         <footer className="footer">
-          © {new Date().getFullYear()} Harshita Panwar · All rights reserved
+          <div className="about-socials">
+            <SocialIcons variant="dark" />
+          </div>
+          <div>
+            © {new Date().getFullYear()} Harshita Panwar · All rights reserved
+          </div>
         </footer>
       )}
     </div>
