@@ -40,19 +40,19 @@ export default function ContactPage({ onNavigate }) {
             <div className="contact-details">
               <div className="contact-item">
                 <MailIcon />
-                <span>harshitapanwar@example.com</span>
+                <span>harshita.panwar2024@design.rishihood.edu.in</span>
               </div>
               <div className="contact-item">
                 <LinkedInIcon />
-                <span>linkedin.com/in/harshitapanwar</span>
+                <span>www.linkedin.com/in/harshita-panwar-84a052318</span>
               </div>
               <div className="contact-item">
                 <BehanceIcon />
-                <span>behance.net/harshitapanwar</span>
+                <span>https://www.behance.net/harshitapanwar7</span>
               </div>
               <div className="contact-item">
                 <InstagramIcon />
-                <span>@harshitapanwar</span>
+                <span>@just_art.craft</span>
               </div>
             </div>
 

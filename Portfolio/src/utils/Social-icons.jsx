@@ -25,22 +25,22 @@ export function SocialIcons({ variant = 'light', decorDots = false }) {
   return (
     <div className={`social-icons${decorDots ? ' social-icons--decor' : ''}`}>
       {wrap(
-        <a href="mailto:harshita@example.com" className={cls} aria-label="Email">
+        <a href="mailto:harshita.panwar2024@design.rishihood.edu.in" className={cls} aria-label="Email">
           <MailIcon />
         </a>
       )}
       {wrap(
-        <a href="https://linkedin.com" target="_blank" rel="noreferrer" className={cls} aria-label="LinkedIn">
+        <a href="https://www.linkedin.com/in/harshita-panwar-84a052318" target="_blank" rel="noreferrer" className={cls} aria-label="LinkedIn">
           <LinkedInIcon />
         </a>
       )}
       {wrap(
-        <a href="https://behance.net" target="_blank" rel="noreferrer" className={cls} aria-label="Behance">
+        <a href="https://www.behance.net/harshitapanwar7" target="_blank" rel="noreferrer" className={cls} aria-label="Behance">
           <BehanceIcon />
         </a>
       )}
       {wrap(
-        <a href="https://instagram.com" target="_blank" rel="noreferrer" className={cls} aria-label="Instagram">
+        <a href="https://www.instagram.com/just_art.craft/" target="_blank" rel="noreferrer" className={cls} aria-label="Instagram">
           <InstagramIcon />
         </a>
       )}

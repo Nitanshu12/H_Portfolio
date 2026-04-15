@@ -31,10 +31,11 @@ export default function WelcomePage({ onNavigate }) {
               <div className="hero-content welcome-content">
                 <h1 className="hero-name welcome-name">Harshita Panwar</h1>
                 <p className="hero-description welcome-description">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                  enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                  nisi ut aliquip ex ea commodo consequat.
+                  Aspiring Interior Designer driven by creativity and curiosity
+                  I create meaningful, experiential spaces by blending culture, 
+                  sustainability and design which result in shaping environments 
+                  that resonate with people and their surroundings.
+
                 </p>
                 <SocialIcons variant="light" decorDots={false} />
               </div>
