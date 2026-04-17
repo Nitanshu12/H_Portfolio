@@ -1,6 +1,6 @@
 import { NavPill } from '../utils/Navpill'
 import { SocialIcons } from '../utils/Social-icons'
-import About       from '../../PORTFOLIO-CONTENT/About-me/About.jpeg'
+import About       from '../../PORTFOLIO-CONTENT/About-me/About1.jpeg'
 
 const SKILLS = [
   'Interior Architecture & Space Design',
