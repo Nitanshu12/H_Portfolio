@@ -5,6 +5,10 @@ import projectsData from '../data/projectsData.json'
 import { SocialIcons } from '../utils/Social-icons'
 import '../gallery.css'
 const allImages = import.meta.glob('../../PORTFOLIO-CONTENT/**/*.{jpg,jpeg,png,webp,gif,svg}', { eager: true, import: 'default' })
+const allVideos = import.meta.glob('../../PORTFOLIO-CONTENT/**/*.{mp4,webm,mov,avi,mkv}', { eager: true, import: 'default' })
+
+const isVideoFile = (filePath) => /\.(mp4|webm|mov|avi|mkv)$/i.test(filePath)
+const getMedia = (filePath) => isVideoFile(filePath) ? allVideos[filePath] : allImages[filePath]
 import coverSpaceDesign    from '../../PORTFOLIO-CONTENT/COVER PHOTOS/2. Space design.jpg'
 import coverFurniture      from '../../PORTFOLIO-CONTENT/COVER PHOTOS/3. Furniture Design.png'
 import coverProduct        from '../../PORTFOLIO-CONTENT/COVER PHOTOS/4. Product Design.png'
@@ -60,7 +64,7 @@ function ProjectCard({ label, cover, onClick }) {
   )
 }
 
-function Lightbox({ src, alt, onClose }) {
+function Lightbox({ src, alt, onClose, isVideo }) {
   useEffect(() => {
     const handleKey = (e) => { if (e.key === 'Escape') onClose() }
     window.addEventListener('keydown', handleKey)
@@ -74,12 +78,25 @@ function Lightbox({ src, alt, onClose }) {
   return createPortal(
     <div className="lightbox-backdrop" onClick={onClose}>
       <button className="lightbox-close" onClick={onClose} aria-label="Close">×</button>
-      <img
-        src={src}
-        alt={alt}
-        className="lightbox-img"
-        onClick={(e) => e.stopPropagation()}
-      />
+      {isVideo ? (
+        <video
+          src={src}
+          className="lightbox-img"
+          onClick={(e) => e.stopPropagation()}
+          controls
+          loop
+          autoPlay
+
+        />
+        
+      ) : (
+        <img
+          src={src}
+          alt={alt}
+          className="lightbox-img"
+          onClick={(e) => e.stopPropagation()}
+        />
+      )}
     </div>,
     document.body
   )
@@ -88,9 +105,16 @@ function Lightbox({ src, alt, onClose }) {
 export default function ProjectsPage({ onNavigate }) {
   const [selectedProject, setSelectedProject] = useState(null)
   const [lightboxSrc, setLightboxSrc] = useState(null)
+  const [lightboxIsVideo, setLightboxIsVideo] = useState(false)
 
-  const openLightbox = useCallback((src) => setLightboxSrc(src), [])
-  const closeLightbox = useCallback(() => setLightboxSrc(null), [])
+  const openLightbox = useCallback((src, isVideo = false) => {
+    setLightboxSrc(src)
+    setLightboxIsVideo(isVideo)
+  }, [])
+  const closeLightbox = useCallback(() => {
+    setLightboxSrc(null)
+    setLightboxIsVideo(false)
+  }, [])
 
   if (selectedProject) {
     const projectInfo = PROJECTS.find(p => p.id === selectedProject)
@@ -127,19 +151,27 @@ export default function ProjectsPage({ onNavigate }) {
             {projData && projData.files && projData.files.length > 0 && (
               <div className="gallery-section">
                 <div className="gallery-grid">
-                  {projData.files.map((file, idx) => (
-                    <div
-                      key={`root-${idx}`}
-                      className="gallery-card"
-                      onClick={() => openLightbox(allImages[file])}
-                    >
-                      <img
-                        src={allImages[file]}
-                        alt={projectInfo.label}
-                        loading="lazy"
-                      />
-                    </div>
-                  ))}
+                  {projData.files.map((file, idx) => {
+                    const isVideo = isVideoFile(file)
+                    const media = getMedia(file)
+                    return (
+                      <div
+                        key={`root-${idx}`}
+                        className="gallery-card"
+                        onClick={() => openLightbox(media, isVideo)}
+                      >
+                        {isVideo ? (
+                          <div className='gallery-card is-video'>
+                            <video src={media} alt={projectInfo.label} loading="lazy" />
+                            {/* <span class="play-icon"></span> */}
+                          </div>
+                          
+                        ) : (
+                          <img src={media} alt={projectInfo.label} loading="lazy" />
+                        )}
+                      </div>
+                    )
+                  })}
                 </div>
               </div>
             )}
@@ -149,19 +181,23 @@ export default function ProjectsPage({ onNavigate }) {
               <div key={subFolder} className="gallery-section">
                 <div className="gallery-subheading">{subFolder}</div>
                 <div className="gallery-grid">
-                  {subData.files.map((file, idx) => (
-                    <div
-                      key={`sub-${subFolder}-${idx}`}
-                      className="gallery-card"
-                      onClick={() => openLightbox(allImages[file])}
-                    >
-                      <img
-                        src={allImages[file]}
-                        alt={subFolder}
-                        loading="lazy"
-                      />
-                    </div>
-                  ))}
+                  {subData.files.map((file, idx) => {
+                    const isVideo = isVideoFile(file)
+                    const media = getMedia(file)
+                    return (
+                      <div
+                        key={`sub-${subFolder}-${idx}`}
+                        className="gallery-card"
+                        onClick={() => openLightbox(media, isVideo)}
+                      >
+                        {isVideo ? (
+                          <video src={media} alt={subFolder} loading="lazy" />
+                        ) : (
+                          <img src={media} alt={subFolder} loading="lazy" />
+                        )}
+                      </div>
+                    )
+                  })}
                 </div>
               </div>
             ))}
@@ -175,7 +211,7 @@ export default function ProjectsPage({ onNavigate }) {
 
         {/* Lightbox */}
         {lightboxSrc && (
-          <Lightbox src={lightboxSrc} alt={projectInfo.label} onClose={closeLightbox} />
+          <Lightbox src={lightboxSrc} alt={projectInfo.label} onClose={closeLightbox} isVideo={lightboxIsVideo} />
         )}
       </div>
     )

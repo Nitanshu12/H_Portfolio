@@ -106,13 +106,18 @@
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.16);
 }
 
-.gallery-card img {
+.gallery-card img,
+.gallery-card video {
   width: 100%;
   height: 100%;
   object-fit: cover;    
   object-position: top;
   display: block;
   padding: 0;
+}
+
+.gallery-card video {
+  background: #000;
 }
 
 .no-content {
@@ -154,6 +159,16 @@
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   cursor: default;
   object-fit: contain;
+}
+
+.lightbox-backdrop video {
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  cursor: default;
 }
 
 .lightbox-close {
@@ -198,3 +213,9 @@
     padding: 16px;
   }
 }
+
+
+.gallery-card video {
+  background: #000;
+}
+
