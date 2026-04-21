@@ -2,13 +2,13 @@
   "1. Jury": {
     "files": [],
     "subfolders": {
-      "Sem 1": {
+      "Semester-1": {
         "files": [
           "../../PORTFOLIO-CONTENT/1. Jury/Sem 1/WhatsApp Image 2026-03-09 at 23.48.57.jpeg"
         ],
         "subfolders": {}
       },
-      "Sem 2": {
+      "Semester-2": {
         "files": [
           "../../PORTFOLIO-CONTENT/1. Jury/Sem 2/WhatsApp Image 2026-03-09 at 23.49.17.jpeg",
           "../../PORTFOLIO-CONTENT/1. Jury/Sem 2/WhatsApp Image 2026-03-09 at 23.49.18 (1).jpeg",
@@ -16,7 +16,7 @@
         ],
         "subfolders": {}
       },
-      "Sem-3": {
+      "Semester-3": {
         "files": [
           "../../PORTFOLIO-CONTENT/1. Jury/Sem-3/Hero-image.jpeg",
           "../../PORTFOLIO-CONTENT/1. Jury/Sem-3/WhatsApp Image 2026-03-09 at 23.50.05.jpeg"
@@ -26,10 +26,14 @@
     }
   },
   "11. Digital Art": {
-    "files": [
-      "../../PORTFOLIO-CONTENT/11. Digital Art/Illustration.png"
-    ],
+    "files": [],
     "subfolders": {
+      "Illustration": {
+        "files": [
+          "../../PORTFOLIO-CONTENT/11. Digital Art/Illustration/Illustration.png"
+        ],
+        "subfolders": {}
+      },
       "Polygon Art": {
         "files": [
           "../../PORTFOLIO-CONTENT/11. Digital Art/Polygon Art/POLYGONART.png"
@@ -38,8 +42,8 @@
       },
       "Typography": {
         "files": [
-          "../../PORTFOLIO-CONTENT/11. Digital Art/Typography/Screenshot 2026-03-27 at 12.42.51 AM.png",
-          "../../PORTFOLIO-CONTENT/11. Digital Art/Typography/Screenshot 2026-03-27 at 12.43.03 AM.png"
+          "../../PORTFOLIO-CONTENT/11. Digital Art/Typography/Typo1.png",
+          "../../PORTFOLIO-CONTENT/11. Digital Art/Typography/Typo2.png"
         ],
         "subfolders": {}
       }
@@ -48,6 +52,7 @@
   "12. Posters": {
     "files": [
       "../../PORTFOLIO-CONTENT/12. Posters/COMPANY PROFILE COVER PAGE.png",
+      "../../PORTFOLIO-CONTENT/12. Posters/Magazine.jpg",
       "../../PORTFOLIO-CONTENT/12. Posters/POD POSTER READING HABITS.png",
       "../../PORTFOLIO-CONTENT/12. Posters/TRAVEL MAGAZINE COVER.png"
     ],
@@ -63,10 +68,10 @@
         ],
         "subfolders": {}
       },
-      "Print 1": {
+      "When Shadow Speaks Life- Woodcut": {
         "files": [
-          "../../PORTFOLIO-CONTENT/13. Print Making/Print 1/WhatsApp Image 2026-02-17 at 01.33.05.jpeg",
-          "../../PORTFOLIO-CONTENT/13. Print Making/Print 1/WhatsApp Image 2026-02-17 at 01.34.58.jpeg"
+          "../../PORTFOLIO-CONTENT/13. Print Making/When Shadow Speaks Life- Woodcut/Picture1.jpeg",
+          "../../PORTFOLIO-CONTENT/13. Print Making/When Shadow Speaks Life- Woodcut/Picture2.jpeg"
         ],
         "subfolders": {}
       }
@@ -125,12 +130,9 @@
     "subfolders": {}
   },
   "2. Space Design": {
-    "files": [
-      "../../PORTFOLIO-CONTENT/2. Space Design/2.The Earthen Sanctum.png",
-      "../../PORTFOLIO-CONTENT/2. Space Design/havillam_page-0001.jpg"
-    ],
+    "files": [],
     "subfolders": {
-      "1.Backyard Retreat Space": {
+      "Backyard Retreat Space": {
         "files": [
           "../../PORTFOLIO-CONTENT/2. Space Design/1.Backyard Retreat Space/WhatsApp Image 2026-02-17 at 10.59.50.jpeg",
           "../../PORTFOLIO-CONTENT/2. Space Design/1.Backyard Retreat Space/WhatsApp Image 2026-02-17 at 10.59.51 (1).jpeg",
@@ -140,67 +142,121 @@
           "../../PORTFOLIO-CONTENT/2. Space Design/1.Backyard Retreat Space/WhatsApp Image 2026-02-17 at 10.59.54.jpeg"
         ],
         "subfolders": {}
+      },
+      "Havillam": {
+        "files": [
+          "../../PORTFOLIO-CONTENT/2. Space Design/Havillam/havillam_page-0001.jpg"
+        ],
+        "subfolders": {}
+      },
+      "The Earthen Sanctum": {
+        "files": [
+          "../../PORTFOLIO-CONTENT/2. Space Design/The Earthen Sanctum/2.The Earthen Sanctum.png"
+        ],
+        "subfolders": {}
       }
     }
   },
   "3. Furniture Design": {
-    "files": [
-      "../../PORTFOLIO-CONTENT/3. Furniture Design/1. Tri Legged Stool.png",
-      "../../PORTFOLIO-CONTENT/3. Furniture Design/2. The MINI Joni Chair.png",
-      "../../PORTFOLIO-CONTENT/3. Furniture Design/3. Technical Drawings.jpg"
-    ],
-    "subfolders": {}
+    "files": [],
+    "subfolders": {
+      "Technical Drawings": {
+        "files": [
+          "../../PORTFOLIO-CONTENT/3. Furniture Design/Technical Drawings/3. Technical Drawings.jpg"
+        ],
+        "subfolders": {}
+      },
+      "Tri Legged Stool": {
+        "files": [
+          "../../PORTFOLIO-CONTENT/3. Furniture Design/Tri Legged Stool/1. Tri Legged Stool.png"
+        ],
+        "subfolders": {}
+      },
+      "The MINI Joni Chair": {
+        "files": [
+          "../../PORTFOLIO-CONTENT/3. Furniture Design/The Mini JONI Chair/2. The MINI Joni Chair.png"
+        ],
+        "subfolders": {}
+      }
+    }
   },
   "4. Product Design": {
-    "files": [
-      "../../PORTFOLIO-CONTENT/4. Product Design/Grapelle Fruit Packaging.png",
-      "../../PORTFOLIO-CONTENT/4. Product Design/koolgro_page-0001.jpg",
-      "../../PORTFOLIO-CONTENT/4. Product Design/redesigning-stalls_page-0001.jpg"
-    ],
-    "subfolders": {}
+    "files": [],
+    "subfolders": {
+      "Grapelle":{
+        "files":[
+          "../../PORTFOLIO-CONTENT/4. Product Design/Grapelle/Grapelle Fruit Packaging.png"
+
+        ],
+        "subfolders":{}
+      },
+      "KoolGro":{
+        "files":[
+          "../../PORTFOLIO-CONTENT/4. Product Design/kool/g1.jpg"
+        ],    
+        "subfolders":{}
+      },
+      "Redesigning Stalls for Street Vendors":{
+        "files":[
+          "../../PORTFOLIO-CONTENT/4. Product Design/Redesigning Stalls for Street Vendors/redesigning-stalls_page-0001.jpg"
+        ],
+        "subfolders":{}
+      } 
+    }
   },
   "5. 3D Modelling": {
-    "files": [
-      "../../PORTFOLIO-CONTENT/5. 3D Modelling/4.png",
-      "../../PORTFOLIO-CONTENT/5. 3D Modelling/5.png",
-      "../../PORTFOLIO-CONTENT/5. 3D Modelling/6.png",
-      "../../PORTFOLIO-CONTENT/5. 3D Modelling/7.png",
-      "../../PORTFOLIO-CONTENT/5. 3D Modelling/spiral staircase.png"
-    ],
-    "subfolders": {}
+    "files": [],
+    "subfolders": {
+      "Spaces":{
+        "files":[
+          "../../PORTFOLIO-CONTENT/5. 3D Modelling/Spaces/4.png",
+          "../../PORTFOLIO-CONTENT/5. 3D Modelling/Spaces/5.png",
+          "../../PORTFOLIO-CONTENT/5. 3D Modelling/Spaces/6.png",
+          "../../PORTFOLIO-CONTENT/5. 3D Modelling/Spaces/7.png"  
+        ],
+        "subfolders":{}
+      },
+      "Spiral Staircase":{
+        "files":[
+          "../../PORTFOLIO-CONTENT/5. 3D Modelling/Spiral Staircase/spiral staircase.png"
+        ],
+        "subfolders":{}
+      }
+
+    }
   },
   "6. CAD Rhino": {
     "files": [],
     "subfolders": {
       "Backyard Retreat 3d ": {
         "files": [
-          "../../PORTFOLIO-CONTENT/6. CAD Rhino/Backyard Retreat 3d /Screenshot 2026-03-27 at 12.55.13 AM.png"
+          "../../PORTFOLIO-CONTENT/6. CAD Rhino/Backyard Retreat 3d /Back1.png"
         ],
         "subfolders": {}
       },
       "Barcelona": {
         "files": [
-          "../../PORTFOLIO-CONTENT/6. CAD Rhino/Barcelona/Screenshot 2026-03-27 at 1.06.48 AM.png",
-          "../../PORTFOLIO-CONTENT/6. CAD Rhino/Barcelona/Screenshot 2026-03-27 at 1.07.01 AM.png"
+          "../../PORTFOLIO-CONTENT/6. CAD Rhino/Barcelona/Bar1.png",
+          "../../PORTFOLIO-CONTENT/6. CAD Rhino/Barcelona/Bar2.png"
         ],
         "subfolders": {}
       },
       "Havillam 3d": {
         "files": [
-          "../../PORTFOLIO-CONTENT/6. CAD Rhino/Havillam 3d/Screenshot 2026-03-27 at 1.00.03 AM 2.png",
-          "../../PORTFOLIO-CONTENT/6. CAD Rhino/Havillam 3d/Screenshot 2026-03-27 at 1.00.43 AM.png",
-          "../../PORTFOLIO-CONTENT/6. CAD Rhino/Havillam 3d/Screenshot 2026-03-27 at 1.01.53 AM.png",
-          "../../PORTFOLIO-CONTENT/6. CAD Rhino/Havillam 3d/Screenshot 2026-03-27 at 1.02.41 AM.png",
-          "../../PORTFOLIO-CONTENT/6. CAD Rhino/Havillam 3d/Screenshot 2026-03-27 at 1.03.50 AM.png",
-          "../../PORTFOLIO-CONTENT/6. CAD Rhino/Havillam 3d/Screenshot 2026-03-27 at 1.04.23 AM.png"
+          "../../PORTFOLIO-CONTENT/6. CAD Rhino/Havillam 3d/1.png",
+          "../../PORTFOLIO-CONTENT/6. CAD Rhino/Havillam 3d/2.png",
+          "../../PORTFOLIO-CONTENT/6. CAD Rhino/Havillam 3d/3.png",
+          "../../PORTFOLIO-CONTENT/6. CAD Rhino/Havillam 3d/4.png",
+          "../../PORTFOLIO-CONTENT/6. CAD Rhino/Havillam 3d/5.png",
+          "../../PORTFOLIO-CONTENT/6. CAD Rhino/Havillam 3d/6.png"
         ],
         "subfolders": {}
       },
       "KoolGro 3d": {
         "files": [
-          "../../PORTFOLIO-CONTENT/6. CAD Rhino/KoolGro 3d/Screenshot 2026-03-27 at 12.46.43 AM.png",
-          "../../PORTFOLIO-CONTENT/6. CAD Rhino/KoolGro 3d/Screenshot 2026-03-27 at 12.57.10 AM.png",
-          "../../PORTFOLIO-CONTENT/6. CAD Rhino/KoolGro 3d/Screenshot 2026-03-27 at 12.57.25 AM.png"
+          "../../PORTFOLIO-CONTENT/6. CAD Rhino/KoolGro 3d/k1.png",
+          "../../PORTFOLIO-CONTENT/6. CAD Rhino/KoolGro 3d/k2.png",
+          "../../PORTFOLIO-CONTENT/6. CAD Rhino/KoolGro 3d/k3.png"
         ],
         "subfolders": {}
       }
@@ -225,7 +281,7 @@
       },
       "2.Metal": {
         "files": [
-          "../../PORTFOLIO-CONTENT/8. Material Exploration/2.Metal/Screenshot 2026-03-27 at 12.20.43 AM.png",
+          "../../PORTFOLIO-CONTENT/8. Material Exploration/2.Metal/Metal1.png",
           "../../PORTFOLIO-CONTENT/8. Material Exploration/2.Metal/WhatsApp Image 2026-03-09 at 23.44.13.jpeg"
         ],
         "subfolders": {}
@@ -246,7 +302,7 @@
       "4.Paper Mache ": {
         "files": [
           "../../PORTFOLIO-CONTENT/8. Material Exploration/4.Paper Mache /Process.png",
-          "../../PORTFOLIO-CONTENT/8. Material Exploration/4.Paper Mache /Screenshot 2026-03-27 at 12.22.37 AM.png"
+          "../../PORTFOLIO-CONTENT/8. Material Exploration/4.Paper Mache /Paper1.png"
         ],
         "subfolders": {}
       },
@@ -261,14 +317,23 @@
     }
   },
   "9. Logo Branding": {
-    "files": [
-      "../../PORTFOLIO-CONTENT/9. Logo Branding/1.png",
-      "../../PORTFOLIO-CONTENT/9. Logo Branding/2.png",
-      "../../PORTFOLIO-CONTENT/9. Logo Branding/Screenshot 2026-03-19 at 3.34.46 PM.png",
-      "../../PORTFOLIO-CONTENT/9. Logo Branding/Screenshot 2026-03-19 at 3.38.51 PM.png",
-      "../../PORTFOLIO-CONTENT/9. Logo Branding/Screenshot 2026-03-19 at 3.42.36 PM.png",
-      "../../PORTFOLIO-CONTENT/9. Logo Branding/Screenshot 2026-03-19 at 3.42.40 PM.png"
-    ],
-    "subfolders": {}
+    "files": [],
+    "subfolders": {
+      "Logo":{
+        "files":[
+          "../../PORTFOLIO-CONTENT/9. Logo Branding/Logo/Logo1.png",
+          "../../PORTFOLIO-CONTENT/9. Logo Branding/Logo/Logo2.png",
+          "../../PORTFOLIO-CONTENT/9. Logo Branding/Logo/Logo3.png",
+          "../../PORTFOLIO-CONTENT/9. Logo Branding/Logo/Logo4.png"
+        ],
+        "subfolders":{}
+      },
+      "Social Media Marketing":{
+        "files":[
+          "../../PORTFOLIO-CONTENT/9. Logo Branding/Social Media Marketing/1.png",
+      "../../PORTFOLIO-CONTENT/9. Logo Branding/Social Media Marketing/2.png"
+        ]
+      }
+    }
   }
 }
