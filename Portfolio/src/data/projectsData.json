@@ -80,7 +80,7 @@
   "14. Unreal Engine": {
     "files": [],
     "subfolders": {
-      "Barcelona Pavallion": {
+      "Barcelona Pavallion: Twinmotion": {
         "files": [
           "../../PORTFOLIO-CONTENT/14. Unreal Engine/Barcelona Pavallion/Image1.jpg",
           "../../PORTFOLIO-CONTENT/14. Unreal Engine/Barcelona Pavallion/Image11.jpg",
@@ -100,7 +100,6 @@
         "files": [
           "../../PORTFOLIO-CONTENT/14. Unreal Engine/Scene 1/AutoScreenshot.png",
           "../../PORTFOLIO-CONTENT/14. Unreal Engine/Scene 1/HighresScreenshot00001.png",
-          "../../PORTFOLIO-CONTENT/14. Unreal Engine/Scene 1/Scene_Render.0021.mp4",
           "../../PORTFOLIO-CONTENT/14. Unreal Engine/Scene 1/Scene Render1.0020_1.mp4"
         ],
         "subfolders": {}
@@ -238,7 +237,7 @@
         ],
         "subfolders": {}
       },
-      "Barcelona": {
+      "Barcelona Pavallion": {
         "files": [
           "../../PORTFOLIO-CONTENT/6. CAD Rhino/Barcelona/Bar1.png",
           "../../PORTFOLIO-CONTENT/6. CAD Rhino/Barcelona/Bar2.png"
@@ -275,7 +274,7 @@
   "8. Material Exploration": {
     "files": [],
     "subfolders": {
-      "1.Wood": {
+      "Wood": {
         "files": [
           "../../PORTFOLIO-CONTENT/8. Material Exploration/1.Wood/WhatsApp Image 2026-03-27 at 00.18.14.jpeg",
           "../../PORTFOLIO-CONTENT/8. Material Exploration/1.Wood/WhatsApp Image 2026-03-27 at 00.18.16 (1).jpeg",
@@ -283,14 +282,14 @@
         ],
         "subfolders": {}
       },
-      "2.Metal": {
+      "Metal": {
         "files": [
           "../../PORTFOLIO-CONTENT/8. Material Exploration/2.Metal/Metal1.png",
           "../../PORTFOLIO-CONTENT/8. Material Exploration/2.Metal/WhatsApp Image 2026-03-09 at 23.44.13.jpeg"
         ],
         "subfolders": {}
       },
-      "3.Clay": {
+      "Clay": {
         "files": [
           "../../PORTFOLIO-CONTENT/8. Material Exploration/3.Clay/WhatsApp Image 2026-03-09 at 23.04.25.jpeg",
           "../../PORTFOLIO-CONTENT/8. Material Exploration/3.Clay/WhatsApp Image 2026-03-09 at 23.04.35.jpeg",
@@ -303,14 +302,14 @@
         ],
         "subfolders": {}
       },
-      "4.Paper Mache ": {
+      "Paper Mache ": {
         "files": [
           "../../PORTFOLIO-CONTENT/8. Material Exploration/4.Paper Mache /Process.png",
           "../../PORTFOLIO-CONTENT/8. Material Exploration/4.Paper Mache /Paper1.png"
         ],
         "subfolders": {}
       },
-      "5.Cement": {
+      "Cement": {
         "files": [
           "../../PORTFOLIO-CONTENT/8. Material Exploration/5.Cement/WhatsApp Image 2026-03-27 at 00.05.45 (1).jpeg",
           "../../PORTFOLIO-CONTENT/8. Material Exploration/5.Cement/WhatsApp Image 2026-03-27 at 00.05.45 (2).jpeg",
@@ -337,6 +336,29 @@
           "../../PORTFOLIO-CONTENT/9. Logo Branding/Social Media Marketing/1.png",
       "../../PORTFOLIO-CONTENT/9. Logo Branding/Social Media Marketing/2.png"
         ]
+      }
+    }
+  },
+  "16. Character Design":{
+    "files":[],
+    "subfolders":{
+      "Apsara":{
+        "files":[
+          "../../PORTFOLIO-CONTENT/16. Character Design /Apsara/AP1.jpg",
+          "../../PORTFOLIO-CONTENT/16. Character Design /Apsara/A2.jpg",
+          "../../PORTFOLIO-CONTENT/16. Character Design /Apsara/A3.jpg",
+          "../../PORTFOLIO-CONTENT/16. Character Design /Apsara/A4.jpg",
+          "../../PORTFOLIO-CONTENT/16. Character Design /Apsara/A5.jpg"
+        ],
+        "subfolders":{}
+      },
+      "Medusa":{
+        "files":[
+          "../../PORTFOLIO-CONTENT/16. Character Design /Medusa/M1.jpg",
+          "../../PORTFOLIO-CONTENT/16. Character Design /Medusa/M2.jpg",
+          "../../PORTFOLIO-CONTENT/16. Character Design /Medusa/M3.png"
+        ],
+        "subfolders":{}
       }
     }
   }

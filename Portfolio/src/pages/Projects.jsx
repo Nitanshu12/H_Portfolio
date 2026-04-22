@@ -24,6 +24,7 @@ import coverUnreal         from '../../PORTFOLIO-CONTENT/COVER PHOTOS/14. UNREAL
 import coverPainting       from '../../PORTFOLIO-CONTENT/COVER PHOTOS/15. Painting Sketching.png'
 import coverJury from '../../PORTFOLIO-CONTENT/COVER PHOTOS/1. Jury.jpeg'
 import coverPoster from '../../PORTFOLIO-CONTENT/COVER PHOTOS/12. Posters.jpeg'
+import coverCharacter from '../../PORTFOLIO-CONTENT/COVER PHOTOS/16. Character Designing.png'
 const PROJECTS = [
   { id: 1,  label: 'Jury',                cover: coverJury,          dataKey: '1. Jury' },
   { id: 2,  label: 'Space Design',        cover: coverSpaceDesign,   dataKey: '2. Space Design' },
@@ -42,6 +43,7 @@ const PROJECTS = [
   { id: 13, label: 'Print Making',        cover: coverPrintMaking,   dataKey: '13. Print Making' },
   { id: 14, label: 'Unreal Engine',       cover: coverUnreal,        dataKey: '14. Unreal Engine' },
   { id: 15, label: 'Painting & Sketches', cover: coverPainting,      dataKey: '15. Painting  -Sketches' },
+  { id: 16, label: 'Character Design',    cover: coverCharacter,     dataKey: '16. Character Design' }
 ]
 
 function ProjectCard({ label, cover, onClick }) {
