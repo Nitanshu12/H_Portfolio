@@ -1,14 +1,8 @@
-import { useState, useCallback, useEffect } from 'react'
-import { createPortal } from 'react-dom'
+import { useNavigate } from 'react-router-dom'
 import { NavPill } from '../utils/Navpill'
-import projectsData from '../data/projectsData.json'
 import { SocialIcons } from '../utils/Social-icons'
 import '../gallery.css'
-const allImages = import.meta.glob('../../PORTFOLIO-CONTENT/**/*.{jpg,jpeg,png,webp,gif,svg}', { eager: true, import: 'default' })
-const allVideos = import.meta.glob('../../PORTFOLIO-CONTENT/**/*.{mp4,webm,mov,avi,mkv}', { eager: true, import: 'default' })
 
-const isVideoFile = (filePath) => /\.(mp4|webm|mov|avi|mkv)$/i.test(filePath)
-const getMedia = (filePath) => isVideoFile(filePath) ? allVideos[filePath] : allImages[filePath]
 import coverSpaceDesign    from '../../PORTFOLIO-CONTENT/COVER PHOTOS/2. Space design.jpg'
 import coverFurniture      from '../../PORTFOLIO-CONTENT/COVER PHOTOS/3. Furniture Design.png'
 import coverProduct        from '../../PORTFOLIO-CONTENT/COVER PHOTOS/4. Product Design.png'
@@ -25,6 +19,7 @@ import coverPainting       from '../../PORTFOLIO-CONTENT/COVER PHOTOS/15. Painti
 import coverJury from '../../PORTFOLIO-CONTENT/COVER PHOTOS/1. Jury.jpeg'
 import coverPoster from '../../PORTFOLIO-CONTENT/COVER PHOTOS/12. Posters.jpeg'
 import coverCharacter from '../../PORTFOLIO-CONTENT/COVER PHOTOS/16. Character Designing.png'
+
 const PROJECTS = [
   { id: 1,  label: 'Jury',                cover: coverJury,          dataKey: '1. Jury' },
   { id: 2,  label: 'Space Design',        cover: coverSpaceDesign,   dataKey: '2. Space Design' },
@@ -66,158 +61,8 @@ function ProjectCard({ label, cover, onClick }) {
   )
 }
 
-function Lightbox({ src, alt, onClose, isVideo }) {
-  useEffect(() => {
-    const handleKey = (e) => { if (e.key === 'Escape') onClose() }
-    window.addEventListener('keydown', handleKey)
-    document.body.style.overflow = 'hidden'
-    return () => {
-      window.removeEventListener('keydown', handleKey)
-      document.body.style.overflow = ''
-    }
-  }, [onClose])
-
-  return createPortal(
-    <div className="lightbox-backdrop" onClick={onClose}>
-      <button className="lightbox-close" onClick={onClose} aria-label="Close">×</button>
-      {isVideo ? (
-        <video
-          src={src}
-          className="lightbox-img"
-          onClick={(e) => e.stopPropagation()}
-          controls
-          loop
-          autoPlay
-
-        />
-        
-      ) : (
-        <img
-          src={src}
-          alt={alt}
-          className="lightbox-img"
-          onClick={(e) => e.stopPropagation()}
-        />
-      )}
-    </div>,
-    document.body
-  )
-}
-
 export default function ProjectsPage({ onNavigate }) {
-  const [selectedProject, setSelectedProject] = useState(null)
-  const [lightboxSrc, setLightboxSrc] = useState(null)
-  const [lightboxIsVideo, setLightboxIsVideo] = useState(false)
-
-  const openLightbox = useCallback((src, isVideo = false) => {
-    setLightboxSrc(src)
-    setLightboxIsVideo(isVideo)
-  }, [])
-  const closeLightbox = useCallback(() => {
-    setLightboxSrc(null)
-    setLightboxIsVideo(false)
-  }, [])
-
-  if (selectedProject) {
-    const projectInfo = PROJECTS.find(p => p.id === selectedProject)
-    const projData = projectsData[projectInfo.dataKey]
-
-    return (
-      <div className="page-wrapper fs-page">
-        <div className="fs-nav">
-          <NavPill activePage="My Projects" onNavigate={onNavigate} />
-        </div>
-        <div className="fs-content project-gallery-content">
-          <div className="fs-inner">
-            <button className="back-btn" onClick={() => setSelectedProject(null)}>
-              &larr; Back to Projects
-            </button>
-            <h1 className="fs-heading" style={{ marginBottom: '24px' }}>{projectInfo.label}</h1>
-
-            {/* Embedded PDFs */}
-            {projectInfo.pdfs && projectInfo.pdfs.length > 0 && (
-              <div className="gallery-section">
-                {projectInfo.pdfs.map((pdf, idx) => (
-                  <div key={`pdf-${idx}`} className="pdf-embed-wrap">
-                    <div className="pdf-embed-label">{pdf.name}</div>
-                    <iframe
-                      src={pdf.url}
-                      className="pdf-embed-frame"
-                      title={pdf.name}
-                    />
-                  </div>
-                ))}
-              </div>
-            )}
-          
-            {projData && projData.files && projData.files.length > 0 && (
-              <div className="gallery-section">
-                <div className="gallery-grid">
-                  {projData.files.map((file, idx) => {
-                    const isVideo = isVideoFile(file)
-                    const media = getMedia(file)
-                    return (
-                      <div
-                        key={`root-${idx}`}
-                        className="gallery-card"
-                        onClick={() => openLightbox(media, isVideo)}
-                      >
-                        {isVideo ? (
-                          <div className='gallery-card is-video'>
-                            <video src={media} alt={projectInfo.label} loading="lazy" />
-                            {/* <span class="play-icon"></span> */}
-                          </div>
-                          
-                        ) : (
-                          <img src={media} alt={projectInfo.label} loading="lazy" />
-                        )}
-                      </div>
-                    )
-                  })}
-                </div>
-              </div>
-            )}
-
-            {/* Display subfolders */}
-            {projData && projData.subfolders && Object.entries(projData.subfolders).map(([subFolder, subData]) => (
-              <div key={subFolder} className="gallery-section">
-                <div className="gallery-subheading">{subFolder}</div>
-                <div className="gallery-grid">
-                  {subData.files.map((file, idx) => {
-                    const isVideo = isVideoFile(file)
-                    const media = getMedia(file)
-                    return (
-                      <div
-                        key={`sub-${subFolder}-${idx}`}
-                        className="gallery-card"
-                        onClick={() => openLightbox(media, isVideo)}
-                      >
-                        {isVideo ? (
-                          <video src={media} alt={subFolder} loading="lazy" />
-                        ) : (
-                          <img src={media} alt={subFolder} loading="lazy" />
-                        )}
-                      </div>
-                    )
-                  })}
-                </div>
-              </div>
-            ))}
-
-            {/* No Content placeholder */}
-            {(!projData || (projData.files.length === 0 && Object.keys(projData.subfolders || {}).length === 0)) && (
-               <div className="no-content"></div>
-            )}
-          </div>
-        </div>
-
-        {/* Lightbox */}
-        {lightboxSrc && (
-          <Lightbox src={lightboxSrc} alt={projectInfo.label} onClose={closeLightbox} isVideo={lightboxIsVideo} />
-        )}
-      </div>
-    )
-  }
+  const navigate = useNavigate()
 
   return (
     <div className="page-wrapper fs-page">
@@ -234,15 +79,12 @@ export default function ProjectsPage({ onNavigate }) {
                 key={p.id} 
                 label={p.label} 
                 cover={p.cover} 
-                onClick={() => setSelectedProject(p.id)} 
+                onClick={() => navigate(`/projects/${p.id}`)} 
               />
             ))}
           </div>
         </div>
       </div>
-      {/* <div className="about-socials">
-          <SocialIcons variant="dark" />
-      </div> */}
     </div>
   )
 }
