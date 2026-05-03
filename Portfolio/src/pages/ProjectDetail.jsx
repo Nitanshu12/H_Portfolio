@@ -34,7 +34,12 @@ const PROJECTS = [
   { id: 3,  label: 'Furniture Design',    cover: coverFurniture,     dataKey: '3. Furniture Design' },
   { id: 4,  label: 'Product Design',      cover: coverProduct,       dataKey: '4. Product Design' },
   { id: 5,  label: '3D Modelling',        cover: cover3D,            dataKey: '5. 3D Modelling' },
-  { id: 6,  label: 'CAD / Rhino',         cover: coverCAD,           dataKey: '6. CAD Rhino' },
+  { id: 6,  label: 'CAD / Rhino',         cover: coverCAD,           dataKey: '6. CAD Rhino',
+    pdfs: [
+      { url: '/pdfs/Havilliam Technical Drawings.pdf' },
+      { url: '/pdfs/Material, Construction and Structure.pdf' }
+    ]
+   },
   { id: 7,  label: 'Design Principles',   cover: coverDesignPrinc,   dataKey: '7. Design Priciples' },
   { id: 8,  label: 'Material Explore',    cover: coverMaterial,      dataKey: '8. Material Exploration' },
   { id: 9,  label: 'Logo & Branding',     cover: coverLogo,          dataKey: '9. Logo Branding' },
