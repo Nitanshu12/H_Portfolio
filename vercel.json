@@ -1,7 +1,6 @@
 {
-  "root": "Portfolio",
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
+  "buildCommand": "cd Portfolio && npm run build",
+  "outputDirectory": "Portfolio/dist",
   "headers": [
     {
       "source": "/:path*",
@@ -13,14 +12,12 @@
       ]
     }
   ],
-  "routes": [
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
     {
-      "src": "^/(?!.*\\.(?:js|css|png|jpg|jpeg|gif|svg|ico|webp|woff|woff2|ttf|eot|otf)$).*$",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
