@@ -1,21 +1,26 @@
 {
   "buildCommand": "cd Portfolio && npm run build",
   "outputDirectory": "Portfolio/dist",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ],
   "headers": [
     {
-      "source": "/assets/(.*)",
+      "source": "/:path*",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=365000000, immutable"
+          "value": "no-cache"
         }
       ]
     }
+  ],
+  "routes": [
+    {
+      "src": "^/(?!.*\\.(?:js|css|png|jpg|jpeg|gif|svg|ico|webp|woff|woff2|ttf|eot|otf)$).*$",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
   ]
 }
+
