@@ -1,5 +1,21 @@
 {
-  "routes": [
-    { "src": "/(.*)", "dest": "/" }
+  "buildCommand": "cd Portfolio && npm run build",
+  "outputDirectory": "Portfolio/dist",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=365000000, immutable"
+        }
+      ]
+    }
   ]
 }
