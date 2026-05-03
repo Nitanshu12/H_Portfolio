@@ -49,23 +49,53 @@ const PROJECTS = [
   { id: 16, label: 'Character Design',    cover: coverCharacter,     dataKey: '16. Character Design' }
 ]
 
-function Lightbox({ src, alt, onClose, isVideo }) {
+/* ── Lightbox with prev/next navigation ── */
+function Lightbox({ items, currentIndex, onClose, onPrev, onNext }) {
+  const item = items[currentIndex]
+  const total = items.length
+
   useEffect(() => {
-    const handleKey = (e) => { if (e.key === 'Escape') onClose() }
+    const handleKey = (e) => {
+      if (e.key === 'Escape')      onClose()
+      if (e.key === 'ArrowRight')  onNext()
+      if (e.key === 'ArrowLeft')   onPrev()
+    }
     window.addEventListener('keydown', handleKey)
     document.body.style.overflow = 'hidden'
     return () => {
       window.removeEventListener('keydown', handleKey)
       document.body.style.overflow = ''
     }
-  }, [onClose])
+  }, [onClose, onNext, onPrev])
 
   return createPortal(
     <div className="lightbox-backdrop" onClick={onClose}>
+      {/* Close */}
       <button className="lightbox-close" onClick={onClose} aria-label="Close">×</button>
-      {isVideo ? (
+
+      {/* Counter */}
+      {total > 1 && (
+        <div className="lightbox-counter">{currentIndex + 1} / {total}</div>
+      )}
+
+      {/* Prev arrow */}
+      {total > 1 && (
+        <button
+          className="lightbox-nav lightbox-prev"
+          onClick={(e) => { e.stopPropagation(); onPrev() }}
+          aria-label="Previous image"
+        >
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+        </button>
+      )}
+
+      {/* Media */}
+      {item.isVideo ? (
         <video
-          src={src}
+          key={item.src}
+          src={item.src}
           className="lightbox-img"
           onClick={(e) => e.stopPropagation()}
           controls
@@ -74,11 +104,25 @@ function Lightbox({ src, alt, onClose, isVideo }) {
         />
       ) : (
         <img
-          src={src}
-          alt={alt}
+          key={item.src}
+          src={item.src}
+          alt={item.alt}
           className="lightbox-img"
           onClick={(e) => e.stopPropagation()}
         />
+      )}
+
+      {/* Next arrow */}
+      {total > 1 && (
+        <button
+          className="lightbox-nav lightbox-next"
+          onClick={(e) => { e.stopPropagation(); onNext() }}
+          aria-label="Next image"
+        >
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </button>
       )}
     </div>,
     document.body
@@ -88,18 +132,29 @@ function Lightbox({ src, alt, onClose, isVideo }) {
 export default function ProjectDetail({ onNavigate }) {
   const { projectId } = useParams()
   const navigate = useNavigate()
-  const [lightboxSrc, setLightboxSrc] = useState(null)
-  const [lightboxIsVideo, setLightboxIsVideo] = useState(false)
 
-  const openLightbox = useCallback((src, isVideo = false) => {
-    setLightboxSrc(src)
-    setLightboxIsVideo(isVideo)
+  // lightbox state: index into flattened items array
+  const [lightboxIndex, setLightboxIndex] = useState(null)
+  // flat list of { src, alt, isVideo } for the whole page
+  const [lightboxItems, setLightboxItems] = useState([])
+
+  const openLightbox = useCallback((items, index) => {
+    setLightboxItems(items)
+    setLightboxIndex(index)
   }, [])
 
   const closeLightbox = useCallback(() => {
-    setLightboxSrc(null)
-    setLightboxIsVideo(false)
+    setLightboxIndex(null)
+    setLightboxItems([])
   }, [])
+
+  const goPrev = useCallback(() => {
+    setLightboxIndex(i => (i - 1 + lightboxItems.length) % lightboxItems.length)
+  }, [lightboxItems.length])
+
+  const goNext = useCallback(() => {
+    setLightboxIndex(i => (i + 1) % lightboxItems.length)
+  }, [lightboxItems.length])
 
   const projectInfo = PROJECTS.find(p => p.id === parseInt(projectId))
 
@@ -119,6 +174,32 @@ export default function ProjectDetail({ onNavigate }) {
   }
 
   const projData = projectsData[projectInfo.dataKey]
+
+  // Build flattened items list: root files + subfolder files (in order)
+  const buildItems = (label) => {
+    const items = []
+    if (projData && projData.files) {
+      projData.files.forEach(file => {
+        items.push({ src: getMedia(file), alt: label, isVideo: isVideoFile(file) })
+      })
+    }
+    if (projData && projData.subfolders) {
+      Object.entries(projData.subfolders).forEach(([subFolder, subData]) => {
+        subData.files.forEach(file => {
+          items.push({ src: getMedia(file), alt: subFolder, isVideo: isVideoFile(file) })
+        })
+      })
+    }
+    return items
+  }
+
+  const allItems = buildItems(projectInfo.label)
+
+  // Map a file to its flat index
+  const getIndex = (file) => {
+    const src = getMedia(file)
+    return allItems.findIndex(item => item.src === src)
+  }
 
   return (
     <div className="page-wrapper fs-page">
@@ -147,18 +228,19 @@ export default function ProjectDetail({ onNavigate }) {
               ))}
             </div>
           )}
-        
+
           {projData && projData.files && projData.files.length > 0 && (
             <div className="gallery-section">
               <div className="gallery-grid">
                 {projData.files.map((file, idx) => {
                   const isVideo = isVideoFile(file)
                   const media = getMedia(file)
+                  const flatIdx = getIndex(file)
                   return (
                     <div
                       key={`root-${idx}`}
                       className="gallery-card"
-                      onClick={() => openLightbox(media, isVideo)}
+                      onClick={() => openLightbox(allItems, flatIdx)}
                     >
                       {isVideo ? (
                         <div className='gallery-card is-video'>
@@ -182,11 +264,12 @@ export default function ProjectDetail({ onNavigate }) {
                 {subData.files.map((file, idx) => {
                   const isVideo = isVideoFile(file)
                   const media = getMedia(file)
+                  const flatIdx = getIndex(file)
                   return (
                     <div
                       key={`sub-${subFolder}-${idx}`}
                       className="gallery-card"
-                      onClick={() => openLightbox(media, isVideo)}
+                      onClick={() => openLightbox(allItems, flatIdx)}
                     >
                       {isVideo ? (
                         <video src={media} alt={subFolder} loading="lazy" />
@@ -208,8 +291,14 @@ export default function ProjectDetail({ onNavigate }) {
       </div>
 
       {/* Lightbox */}
-      {lightboxSrc && (
-        <Lightbox src={lightboxSrc} alt={projectInfo.label} onClose={closeLightbox} isVideo={lightboxIsVideo} />
+      {lightboxIndex !== null && lightboxItems.length > 0 && (
+        <Lightbox
+          items={lightboxItems}
+          currentIndex={lightboxIndex}
+          onClose={closeLightbox}
+          onPrev={goPrev}
+          onNext={goNext}
+        />
       )}
     </div>
   )

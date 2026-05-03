@@ -75,8 +75,6 @@ export default function App() {
         }
       }
     }
-
-    // Also handle trackpad swipe on desktop (horizontal scroll)
     const handleWheel = (e) => {
       // Prevent rapid successive scrolls
       if (isNavigating.current) return
